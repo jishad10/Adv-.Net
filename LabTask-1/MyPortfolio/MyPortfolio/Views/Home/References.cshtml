@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "References";
+}
+
+<h2>References</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Sl_No</th>
+        <th>Name</th>
+    </tr>
+    @foreach (var item in ViewBag.References)
+    {
+        <tr>
+            <td><a href="/home/referenceDetails/@item.Id">@item.Id</a></td>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>

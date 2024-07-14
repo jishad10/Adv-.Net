@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_OuterLayout.cshtml";
+}
+
+@if (TempData["Msg"] != null)
+{
+    <div class="alert alert-success mb-3">
+        @TempData["Msg"]
+    </div>
+}
+
+<div>
+    <h3> My Name is Jahidul Islam Shikdar </h3>
+</div>
+

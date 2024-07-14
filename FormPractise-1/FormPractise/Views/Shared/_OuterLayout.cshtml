@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "_OuterLayout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container mt-5 mb-5 p-4 border rounded">
+        <div class="d-flex justify-content-center mb-3">
+            <a class="btn btn-primary mx-2" href="/">Home</a>
+            <a class="btn btn-success mx-2" href="/home/about">About</a>
+            <a class="btn btn-danger mx-2" href="/home/login">Login</a>
+            <a class="btn btn-warning mx-2" href="/home/signup">Sign Up</a>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        Copyright @@.Net 2024 Summer
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

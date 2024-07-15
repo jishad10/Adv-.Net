@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LAB_AModelStoreContainer" CdmEntityContainer="LAB_AEntities">
+    <EntitySetMapping Name="TripPlans">
+      <EntityTypeMapping TypeName="LAB_AModel.TripPlan">
+        <MappingFragment StoreEntitySet="TripPlans">
+          <ScalarProperty Name="TripId" ColumnName="TripId" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LAB_AModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Uname" ColumnName="Uname" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Itinerays">
+      <EntityTypeMapping TypeName="LAB_AModel.Itineray">
+        <MappingFragment StoreEntitySet="Itinerays">
+          <ScalarProperty Name="Itinerary_pdf_url" ColumnName="Itinerary_pdf_url" />
+          <ScalarProperty Name="TId" ColumnName="TId" />
+          <ScalarProperty Name="ItineraryId" ColumnName="ItineraryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackingItems">
+      <EntityTypeMapping TypeName="LAB_AModel.PackingItem">
+        <MappingFragment StoreEntitySet="PackingItems">
+          <ScalarProperty Name="Packed" ColumnName="Packed" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="TId" ColumnName="TId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shares">
+      <EntityTypeMapping TypeName="LAB_AModel.Share">
+        <MappingFragment StoreEntitySet="Shares">
+          <ScalarProperty Name="TId" ColumnName="TId" />
+          <ScalarProperty Name="ShareID" ColumnName="ShareID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

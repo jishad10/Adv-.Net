@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LAB_AModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Itinerays">
+          <Key>
+            <PropertyRef Name="ItineraryId" />
+          </Key>
+          <Property Name="ItineraryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TId" Type="int" Nullable="false" />
+          <Property Name="Itinerary_pdf_url" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PackingItems">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TId" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Packed" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shares">
+          <Key>
+            <PropertyRef Name="ShareID" />
+          </Key>
+          <Property Name="ShareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripPlans">
+          <Key>
+            <PropertyRef Name="TripId" />
+          </Key>
+          <Property Name="TripId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Tittle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Budget" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Itinerays_TripPlans">
+          <End Role="TripPlans" Type="Self.TripPlans" Multiplicity="1" />
+          <End Role="Itinerays" Type="Self.Itinerays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPlans">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Itinerays">
+              <PropertyRef Name="TId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackingItems_TripPlans1">
+          <End Role="TripPlans" Type="Self.TripPlans" Multiplicity="1" />
+          <End Role="PackingItems" Type="Self.PackingItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPlans">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="PackingItems">
+              <PropertyRef Name="TId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shares_TripPlans">
+          <End Role="TripPlans" Type="Self.TripPlans" Multiplicity="1" />
+          <End Role="Shares" Type="Self.Shares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPlans">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Shares">
+              <PropertyRef Name="TId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripPlans_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="TripPlans" Type="Self.TripPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripPlans">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAB_AModelStoreContainer">
+          <EntitySet Name="Itinerays" EntityType="Self.Itinerays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackingItems" EntityType="Self.PackingItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shares" EntityType="Self.Shares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TripPlans" EntityType="Self.TripPlans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Itinerays_TripPlans" Association="Self.FK_Itinerays_TripPlans">
+            <End Role="TripPlans" EntitySet="TripPlans" />
+            <End Role="Itinerays" EntitySet="Itinerays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackingItems_TripPlans1" Association="Self.FK_PackingItems_TripPlans1">
+            <End Role="TripPlans" EntitySet="TripPlans" />
+            <End Role="PackingItems" EntitySet="PackingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shares_TripPlans" Association="Self.FK_Shares_TripPlans">
+            <End Role="TripPlans" EntitySet="TripPlans" />
+            <End Role="Shares" EntitySet="Shares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripPlans_Users" Association="Self.FK_TripPlans_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TripPlans" EntitySet="TripPlans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LAB_AModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Itineray">
+          <Key>
+            <PropertyRef Name="ItineraryId" />
+          </Key>
+          <Property Name="ItineraryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TId" Type="Int32" Nullable="false" />
+          <Property Name="Itinerary_pdf_url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TripPlan" Relationship="Self.FK_Itinerays_TripPlans" FromRole="Itinerays" ToRole="TripPlans" />
+        </EntityType>
+        <EntityType Name="PackingItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TId" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Packed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TripPlan" Relationship="Self.FK_PackingItems_TripPlans1" FromRole="PackingItems" ToRole="TripPlans" />
+        </EntityType>
+        <EntityType Name="Share">
+          <Key>
+            <PropertyRef Name="ShareID" />
+          </Key>
+          <Property Name="ShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TripPlan" Relationship="Self.FK_Shares_TripPlans" FromRole="Shares" ToRole="TripPlans" />
+        </EntityType>
+        <EntityType Name="TripPlan">
+          <Key>
+            <PropertyRef Name="TripId" />
+          </Key>
+          <Property Name="TripId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Tittle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Budget" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Itinerays" Relationship="Self.FK_Itinerays_TripPlans" FromRole="TripPlans" ToRole="Itinerays" />
+          <NavigationProperty Name="PackingItems" Relationship="Self.FK_PackingItems_TripPlans1" FromRole="TripPlans" ToRole="PackingItems" />
+          <NavigationProperty Name="Shares" Relationship="Self.FK_Shares_TripPlans" FromRole="TripPlans" ToRole="Shares" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TripPlans_Users" FromRole="TripPlans" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TripPlans" Relationship="Self.FK_TripPlans_Users" FromRole="Users" ToRole="TripPlans" />
+        </EntityType>
+        <Association Name="FK_Itinerays_TripPlans">
+          <End Role="TripPlans" Type="Self.TripPlan" Multiplicity="1" />
+          <End Role="Itinerays" Type="Self.Itineray" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPlans">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Itinerays">
+              <PropertyRef Name="TId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackingItems_TripPlans1">
+          <End Role="TripPlans" Type="Self.TripPlan" Multiplicity="1" />
+          <End Role="PackingItems" Type="Self.PackingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPlans">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="PackingItems">
+              <PropertyRef Name="TId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shares_TripPlans">
+          <End Role="TripPlans" Type="Self.TripPlan" Multiplicity="1" />
+          <End Role="Shares" Type="Self.Share" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TripPlans">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Shares">
+              <PropertyRef Name="TId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripPlans_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="TripPlans" Type="Self.TripPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripPlans">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAB_AEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Itinerays" EntityType="Self.Itineray" />
+          <EntitySet Name="PackingItems" EntityType="Self.PackingItem" />
+          <EntitySet Name="Shares" EntityType="Self.Share" />
+          <EntitySet Name="TripPlans" EntityType="Self.TripPlan" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Itinerays_TripPlans" Association="Self.FK_Itinerays_TripPlans">
+            <End Role="TripPlans" EntitySet="TripPlans" />
+            <End Role="Itinerays" EntitySet="Itinerays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackingItems_TripPlans1" Association="Self.FK_PackingItems_TripPlans1">
+            <End Role="TripPlans" EntitySet="TripPlans" />
+            <End Role="PackingItems" EntitySet="PackingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shares_TripPlans" Association="Self.FK_Shares_TripPlans">
+            <End Role="TripPlans" EntitySet="TripPlans" />
+            <End Role="Shares" EntitySet="Shares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripPlans_Users" Association="Self.FK_TripPlans_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TripPlans" EntitySet="TripPlans" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LAB_AModelStoreContainer" CdmEntityContainer="LAB_AEntities1">
+          <EntitySetMapping Name="Itinerays">
+            <EntityTypeMapping TypeName="LAB_AModel.Itineray">
+              <MappingFragment StoreEntitySet="Itinerays">
+                <ScalarProperty Name="ItineraryId" ColumnName="ItineraryId" />
+                <ScalarProperty Name="TId" ColumnName="TId" />
+                <ScalarProperty Name="Itinerary_pdf_url" ColumnName="Itinerary_pdf_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackingItems">
+            <EntityTypeMapping TypeName="LAB_AModel.PackingItem">
+              <MappingFragment StoreEntitySet="PackingItems">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="TId" ColumnName="TId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Packed" ColumnName="Packed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shares">
+            <EntityTypeMapping TypeName="LAB_AModel.Share">
+              <MappingFragment StoreEntitySet="Shares">
+                <ScalarProperty Name="ShareID" ColumnName="ShareID" />
+                <ScalarProperty Name="TId" ColumnName="TId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TripPlans">
+            <EntityTypeMapping TypeName="LAB_AModel.TripPlan">
+              <MappingFragment StoreEntitySet="TripPlans">
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LAB_AModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Uname" ColumnName="Uname" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

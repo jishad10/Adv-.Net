@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LAB_AModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TripPlan">
+    <Key>
+      <PropertyRef Name="TripId" />
+    </Key>
+    <Property Name="TripId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Tittle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Budget" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_TripPlans_Users" FromRole="TripPlans" ToRole="Users" />
+    <NavigationProperty Name="Itinerays" Relationship="LAB_AModel.FK_Itinerays_TripPlans" FromRole="TripPlan" ToRole="Itineray" />
+    <NavigationProperty Name="PackingItem" Relationship="LAB_AModel.FK_PackingItems_TripPlans" FromRole="TripPlan" ToRole="PackingItem" />
+    <NavigationProperty Name="Shares" Relationship="LAB_AModel.FK_Shares_TripPlans" FromRole="TripPlan" ToRole="Share" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TripPlans" Relationship="Self.FK_TripPlans_Users" FromRole="Users" ToRole="TripPlans" />
+  </EntityType>
+  <Association Name="FK_TripPlans_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="TripPlans" Type="Self.TripPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TripPlans">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LAB_AEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TripPlans" EntityType="Self.TripPlan" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_TripPlans_Users" Association="Self.FK_TripPlans_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TripPlans" EntitySet="TripPlans" />
+    </AssociationSet>
+    <EntitySet Name="Itinerays" EntityType="LAB_AModel.Itineray" />
+    <EntitySet Name="PackingItems" EntityType="LAB_AModel.PackingItem" />
+    <EntitySet Name="Shares" EntityType="LAB_AModel.Share" />
+    <AssociationSet Name="FK_Itinerays_TripPlans" Association="LAB_AModel.FK_Itinerays_TripPlans">
+      <End Role="TripPlan" EntitySet="TripPlans" />
+      <End Role="Itineray" EntitySet="Itinerays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackingItems_TripPlans" Association="LAB_AModel.FK_PackingItems_TripPlans">
+      <End Role="TripPlan" EntitySet="TripPlans" />
+      <End Role="PackingItem" EntitySet="PackingItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shares_TripPlans" Association="LAB_AModel.FK_Shares_TripPlans">
+      <End Role="TripPlan" EntitySet="TripPlans" />
+      <End Role="Share" EntitySet="Shares" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Itineray">
+    <Key>
+      <PropertyRef Name="ItineraryId" />
+    </Key>
+    <Property Name="ItineraryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TId" Type="Int32" Nullable="false" />
+    <Property Name="Itinerary_pdf_url" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TripPlan" Relationship="LAB_AModel.FK_Itinerays_TripPlans" FromRole="Itineray" ToRole="TripPlan" />
+  </EntityType>
+  <EntityType Name="PackingItem">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Packed" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TripPlan" Relationship="LAB_AModel.FK_PackingItems_TripPlans" FromRole="PackingItem" ToRole="TripPlan" />
+  </EntityType>
+  <EntityType Name="Share">
+    <Key>
+      <PropertyRef Name="ShareID" />
+    </Key>
+    <Property Name="ShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TripPlan" Relationship="LAB_AModel.FK_Shares_TripPlans" FromRole="Share" ToRole="TripPlan" />
+  </EntityType>
+  <Association Name="FK_Itinerays_TripPlans">
+    <End Type="LAB_AModel.TripPlan" Role="TripPlan" Multiplicity="1" />
+    <End Type="LAB_AModel.Itineray" Role="Itineray" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TripPlan">
+        <PropertyRef Name="TripId" />
+      </Principal>
+      <Dependent Role="Itineray">
+        <PropertyRef Name="TId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackingItems_TripPlans">
+    <End Type="LAB_AModel.TripPlan" Role="TripPlan" Multiplicity="1" />
+    <End Type="LAB_AModel.PackingItem" Role="PackingItem" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TripPlan">
+        <PropertyRef Name="TripId" />
+      </Principal>
+      <Dependent Role="PackingItem">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shares_TripPlans">
+    <End Type="LAB_AModel.TripPlan" Role="TripPlan" Multiplicity="1" />
+    <End Type="LAB_AModel.Share" Role="Share" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TripPlan">
+        <PropertyRef Name="TripId" />
+      </Principal>
+      <Dependent Role="Share">
+        <PropertyRef Name="TId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

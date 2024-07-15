@@ -1,0 +1,88 @@
+﻿@model IEnumerable<LabExam.DTOs.TripPlanDTO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<div class="row">
+    <form method="post" action="/TripPlan/Search">
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="Search" placeholder="Search" />
+        </div>
+        <p></p>
+        <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+<p></p>
+
+<h2>TripPlans</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TripId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tittle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Budget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tittle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Budget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a class="btn btn-success" href="/TripPlan/Edit/@item.TripId">Edit</a>
+                <a class="btn btn-danger" href="/TripPlan/Delete/@item.TripId">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<table>
+    <tr>
+        <td>
+            <a class="btn btn-success" href="/TripPlan/Create">Create</a>
+        </td>
+    </tr>
+</table>

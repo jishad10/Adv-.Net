@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" style="width: 100%; margin: auto;">
+        <div class="container-fluid">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-3" style="margin-left: 150px;">
+                    <a class="nav-link text-black fw-bold" href="/Order/Index">Buy Product</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-black fw-bold" href="/Order/Cart">Cart</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link text-black fw-bold" href="/Login/LogOut">LogOut</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <br />
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <br />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

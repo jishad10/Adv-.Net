@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PMS1.DTOs.ProductDTO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InternalLayout.cshtml";
+}
+
+<div class="row">
+    <form method="post" action="/Product/Search">
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="Search" placeholder="Search" />
+        </div>
+        <p></p>
+        <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+<p></p>
+
+<h2>Product List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CId)
+            </td>
+            <td>
+                <a class="btn btn-success" href="/Product/Edit/@item.Id">Edit</a>
+                <a class="btn btn-danger" href="/Product/Delete/@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<table>
+    <tr>
+        <td>
+            <a class="btn btn-success" href="/Product/Create">Create</a>
+        </td>
+    </tr>
+</table>
+

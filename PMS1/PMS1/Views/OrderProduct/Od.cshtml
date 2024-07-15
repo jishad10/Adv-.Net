@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PMS1.DTOs.OrderProductDTO>
+
+@{
+    ViewBag.Title = "Od";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2>Order Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+        </tr>
+     
+     //OId onek golo aace sob same tai ekta dorle hobe 
+     }
+    <tr>
+        <td><a href="/OrderProduct/Decline/@Model.First().OId" class="btn btn-danger">Decline</a></td> 
+        <td><a href="/OrderProduct/Accept/@Model.First().OId" class="btn btn-success">Accept</a></td>
+    </tr>
+    
+</table>
+

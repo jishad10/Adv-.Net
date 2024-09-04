@@ -27,7 +27,7 @@ namespace IntroApi.Controllers
         [Route("api/student/create")]
         public HttpResponseMessage CreateStudent(Student s)
         {
-            //db object
+            //db object create
             //db.Students.Add(s);
             //db.SaveChanges();
             return Request.CreateResponse(HttpStatusCode.OK, "Created");

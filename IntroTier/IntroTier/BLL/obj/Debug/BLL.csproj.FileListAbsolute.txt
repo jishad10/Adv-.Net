@@ -1,0 +1,23 @@
+E:\Ms Visual stdio\IntroTier\BLL\bin\Debug\BLL.dll
+E:\Ms Visual stdio\IntroTier\BLL\bin\Debug\BLL.pdb
+E:\Ms Visual stdio\IntroTier\BLL\bin\Debug\DAL.dll
+E:\Ms Visual stdio\IntroTier\BLL\bin\Debug\DAL.pdb
+E:\Ms Visual stdio\IntroTier\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\Ms Visual stdio\IntroTier\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\Ms Visual stdio\IntroTier\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\Ms Visual stdio\IntroTier\BLL\obj\Debug\BLL.dll
+E:\Ms Visual stdio\IntroTier\BLL\obj\Debug\BLL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\BLL.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\BLL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\AutoMapper.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\DAL.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\DAL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\AutoMapper.xml
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\obj\Debug\BLL.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\obj\Debug\BLL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\DAL.dll.config
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\BLL\bin\Debug\EntityFramework.xml

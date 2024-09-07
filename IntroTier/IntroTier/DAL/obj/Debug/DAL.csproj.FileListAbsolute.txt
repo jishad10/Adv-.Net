@@ -1,0 +1,20 @@
+E:\Ms Visual stdio\IntroTier\DAL\bin\Debug\DAL.dll
+E:\Ms Visual stdio\IntroTier\DAL\bin\Debug\DAL.pdb
+E:\Ms Visual stdio\IntroTier\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\Ms Visual stdio\IntroTier\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Ms Visual stdio\IntroTier\DAL\obj\Debug\DAL.dll
+E:\Ms Visual stdio\IntroTier\DAL\obj\Debug\DAL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\DAL.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\DAL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.pdb
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\DAL.dll.config
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.Migrations.DBINit.resources
+C:\Users\Lenovo\Downloads\IntroTier\IntroTier\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

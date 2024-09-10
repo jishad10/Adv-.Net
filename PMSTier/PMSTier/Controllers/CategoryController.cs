@@ -8,7 +8,8 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace PMSTier.Controllers
-{
+{   
+    //basic path
     [RoutePrefix("api/category")]
     public class CategoryController : ApiController
     {
